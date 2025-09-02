@@ -31,7 +31,7 @@ jobs:
       - name: Prepare binary for upload
         run: |
           mkdir -p release
-          cp target/release/spike-spy release/spike-spy-${RUNNER_OS,,}
+          cp target/release/spike-spy release/spike-spy-$(echo $RUNNER_OS | tr '[:upper:]' '[:lower:]')
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v1
