@@ -1,0 +1,37 @@
+name: Release Rust Binaries
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1.1.0
+        with:
+          rust-version: stable
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Prepare binary for upload
+        run: |
+          mkdir -p release
+          cp target/release/spike-spy release/spike-spy-${RUNNER_OS,,}
+
+      - name: Upload to GitHub Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
