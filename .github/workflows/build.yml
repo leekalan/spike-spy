@@ -15,7 +15,7 @@ jobs:
         - name: Send repository_dispatch
           uses: peter-evans/repository-dispatch@v2
           with:
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.REPO_DISPATCH_TOKEN }}
             repository: leekalan/homebrew-tap
             event-type: spike-spy-release
             client-payload: '{"tag":"${{ github.ref_name }}"}'
