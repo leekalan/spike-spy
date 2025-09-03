@@ -1,0 +1,38 @@
+name: Rust CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  compile-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+
+      - name: Compile Debug Build
+        run: cargo build
+
+      - name: Run Tests
+        run: cargo test --all
+
+      - name: Check Version
+        run: cargo run -- --version
+
+      - name: Run Clippy (optional lint)
+        run: cargo clippy -- -D warnings

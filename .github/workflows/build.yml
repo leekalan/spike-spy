@@ -9,6 +9,17 @@ permissions:
   contents: write
 
 jobs:
+  notify-tap:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Send repository_dispatch
+          uses: peter-evans/repository-dispatch@v2
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            repository: leekalan/homebrew-tap
+            event-type: spike-spy-release
+            client-payload: '{"tag":"${{ github.ref_name }}"}'
+  
   build:
     runs-on: ${{ matrix.os }}
     strategy:

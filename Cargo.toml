@@ -1,8 +1,8 @@
 [package]
 name = "spike-spy"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 
 [dependencies]
-clap = { version = "4.5.46", features = ["derive"] }
+clap = { version = "4.5.47", features = ["derive"] }
 sysinfo = "0.37.0"
