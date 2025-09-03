@@ -25,7 +25,19 @@ cargo build --release
 
 The compiled binary will be in `target/release/spike-spy`.
 
-### Homebrew (macOS)
+### Homebrew
+
+**Add the tap:**
+
+```bash
+brew tap leekalan/tap https://github.com/leekalan/homebrew-tap
+```
+
+**Install the program:**
+
+```bash
+brew install spike-spy
+```
 
 ## 🛠 Usage
 
