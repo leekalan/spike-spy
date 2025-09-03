@@ -54,7 +54,7 @@ pub fn main_loop(details: SystemDetails, extras: Extras) {
 
             if let Some(first) = snapshot_deltas.next() {
                 println!(
-                    "Top CPU offenders (over last {})",
+                    "Top CPU offenders (over last {}):",
                     format_duration(sys_delta.elapsed())
                 );
 

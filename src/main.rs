@@ -20,7 +20,7 @@ struct Error {
 }
 
 #[derive(Parser, Debug)]
-#[command(name = "spike-spy", version, about = "Monitors for CPU spikes")]
+#[command(name = "spike-spy", version, about = "Monitors for CPU usage spikes")]
 pub struct Cli {
     /// Poll interval in milliseconds (>=0)
     #[arg(default_value_t = POLL_INTERVAL)]
