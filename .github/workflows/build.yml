@@ -36,6 +36,7 @@ jobs:
           else
             cp target/release/spike-spy release/spike-spy-$(echo $RUNNER_OS | tr '[:upper:]' '[:lower:]')
           fi
+        shell: bash
 
       - name: Upload to GitHub Releases
         uses: softprops/action-gh-release@v1
